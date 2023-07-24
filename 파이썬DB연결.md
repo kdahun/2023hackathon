@@ -1,3 +1,5 @@
+
+# 테이블 생성
   import pymysql
   
   conn = pymysql.connect(host = 'localhost',user = 'testuser', password = 'pas1234', db = 'testdb' , charset = 'utf8')
