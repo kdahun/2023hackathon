@@ -31,8 +31,7 @@
                 
                 for x in mycursor:
                     print(x)
-
-  데이터베이스 출력
+데이터베이스 출력
 
 # 테이블 생성
     import pymysql
