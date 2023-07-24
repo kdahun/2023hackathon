@@ -18,6 +18,7 @@
 
                 
 데이터베이스 출력
+
                 mydb = pymysql.connect(
                     host="202.31.147.129",
                     user='jisung',
