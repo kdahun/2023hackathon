@@ -17,11 +17,12 @@
     4. 트랜잭션 관리 : 커서를 사용하여 트랜잭션을 시작하고 커밋 또는 롤백하는 등의 트랜잭션 관리를 할 수 있다.
 
 
+
                 mydb = pymysql.connect(
-                        host="202.31.147.129",
-                        user='jisung',
-                        password="Wldnjs981212@@",
-                        port = 13306
+                    host="202.31.147.129",
+                    user='jisung',
+                    password="Wldnjs981212@@",
+                    port = 13306
                 )
                 
                 mycursor = mydb.cursor()
@@ -29,7 +30,8 @@
                 mycursor.execute("SHOW DATABASES")
                 
                 for x in mycursor:
-                        print(x)
+                    print(x)
+
   데이터베이스 출력
 
 # 테이블 생성
