@@ -68,8 +68,7 @@
             else:
                 print("오류가 발생하여 테이블을 생성하지 못했습니다:", e)
 
-# with을 사용함으로써 conn이 close되어서
-# 다시 conn으로 연결을 해줘야된다.
+# with을 사용함으로써 conn이 close되어서 다시 conn으로 연결을 해줘야된다.
 
         conn = pymysql.connect(
             host='202.31.147.129',
