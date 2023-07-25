@@ -11,5 +11,5 @@ Open JDK 폴더(C:\Program Files\Android\Android Studio\jre\bin)로 이동하여
 ![image](https://github.com/kdahun/2023hackathon/assets/101082485/9d168045-22d0-41c2-91e4-9361c5cfe0e1)
 
 ## 5. 안드로이드 스튜디오로 돌아와 Gradle Scripts -> build.gradle(2번째꺼) -> dependencies 부분에 다음 코드를 추가한다.
-  implementation 'com.google.android.gms:play-services-location:17.0.0'
-  implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
