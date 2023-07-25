@@ -84,3 +84,52 @@
                 cur.execute('SHOW TABLES')
                 for data in cur:
                     print(data)
+
+
+# 테이블에 값 넣기
+        import pymysql
+        import pandas as pd
+
+        try:
+                connection = pymysql.connect(
+                        host = '202.31.147.129',
+                        user = 'jisung',
+                        password = 'Wldnjs981212@@'
+                        db = 'weater'
+                        port = 13306
+                )
+
+                # MySQL에 데이터프레임 저장
+                with connection.cursor() as cursor:
+                        # 데이터프레임의 값을 MySQL에 삽입
+
+                        for index, row in a.iterrows():
+                                cursor.execute("INSERT INTO wave2 (num, latitude,longitude, wavesize, waveway,wavecycle,windspeed,windway) VALUES (%s, %s,%s,%s,%s,%s,%s,%s);", (row[0],row[1], row[2], row[3], row[4], row[5], row[6], row[7] ))
+
+                        # 변동사항 저장
+                        connection.commit()
+        except pymysql.Error as e:
+                print("Error while connecting to MySQL",e)
+        finally:
+                if connection and connection.open:
+                        connection.close()
+
+
+# 마리아 DB에서 파이썬으로 데이터 불러오기(데이터프레임 형태로)
+        import pymysql
+
+        # 데이터베이스 연결 설정
+        connection = pymysql.connect(
+                host='202.31.147.129',
+                user='jisung',
+                password='Wldnjs981212@@'
+                db='weater',
+                port=13306
+        )
+
+        query = "SELECT * FROM wave2;"
+
+        df = pd.read_sql_query(query,connection)
+        connection.close()
+
+        display(df)
