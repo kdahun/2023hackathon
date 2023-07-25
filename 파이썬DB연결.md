@@ -19,69 +19,69 @@
                 
 데이터베이스 출력
 
-                mydb = pymysql.connect(
-                    host="202.31.147.129",
-                    user='jisung',
-                    password="Wldnjs981212@@",
-                    port = 13306
-                )
-                
-                mycursor = mydb.cursor()
-                
-                mycursor.execute("SHOW DATABASES")
-                
-                for x in mycursor:
-                    print(x)
+        mydb = pymysql.connect(
+            host="202.31.147.129",
+            user='jisung',
+            password="Wldnjs981212@@",
+            port = 13306
+        )
+        
+        mycursor = mydb.cursor()
+        
+        mycursor.execute("SHOW DATABASES")
+        
+        for x in mycursor:
+            print(x)
 
 
 
 # 테이블 생성
 
-                import pymysql
-                
-                conn = pymysql.connect(
-                    host='202.31.147.129',
-                    user='jisung',
-                    password='Wldnjs981212@@',
-                    db='weater',
-                    port=13306
-                )
-                
-                sql = """CREATE TABLE IF NOT EXISTS wave (
-                latitude FLOAT,
-                longitude FLOAT,
-                wavesize FLOAT,
-                waveway VARCHAR(255),
-                wavecycle FLOAT,
-                windspeed FLOAT,
-                windway VARCHAR(255)
-                )"""
-                
-                try:
-                    with conn:
-                        with conn.cursor() as cur:
-                            cur.execute(sql)
-                            print("테이블 생성에 성공하였습니다.")
-                except pymysql.err.InternalError as e:
-                    if e.args[0] == 1050:  # 1050은 'Table already exists' 오류 코드입니다.
-                        print("테이블이 이미 존재합니다. 기존 테이블을 사용합니다.")
-                    else:
-                        print("오류가 발생하여 테이블을 생성하지 못했습니다:", e)
+        import pymysql
+        
+        conn = pymysql.connect(
+            host='202.31.147.129',
+            user='jisung',
+            password='Wldnjs981212@@',
+            db='weater',
+            port=13306
+        )
+        
+        sql = """CREATE TABLE IF NOT EXISTS wave (
+        latitude FLOAT,
+        longitude FLOAT,
+        wavesize FLOAT,
+        waveway VARCHAR(255),
+        wavecycle FLOAT,
+        windspeed FLOAT,
+        windway VARCHAR(255)
+        )"""
+        
+        try:
+            with conn:
+                with conn.cursor() as cur:
+                    cur.execute(sql)
+                    print("테이블 생성에 성공하였습니다.")
+        except pymysql.err.InternalError as e:
+            if e.args[0] == 1050:  # 1050은 'Table already exists' 오류 코드입니다.
+                print("테이블이 이미 존재합니다. 기존 테이블을 사용합니다.")
+            else:
+                print("오류가 발생하여 테이블을 생성하지 못했습니다:", e)
 
 # with을 사용함으로써 conn이 close되어서
 # 다시 conn으로 연결을 해줘야된다.
 
-                conn = pymysql.connect(
-                    host='202.31.147.129',
-                    user='jisung',
-                    password='Wldnjs981212@@',
-                    db='weater',
-                    port=13306
-                )
+        conn = pymysql.connect(
+            host='202.31.147.129',
+            user='jisung',
+            password='Wldnjs981212@@',
+            db='weater',
+            port=13306
+        )
 
 # 테이블 확인
-                with conn:
-                    with conn.cursor() as cur:
-                        cur.execute('SHOW TABLES')
-                        for data in cur:
-                            print(data)
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute('SHOW TABLES')
+                for data in cur:
+                    print(data)
