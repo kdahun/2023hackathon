@@ -152,5 +152,21 @@ distanceTo() 메서드는 Location 객체에서 제공하는 메서드로, 두 �
       }
 1. getBlackIce() 함수는 UI 스레드에서 호출된다. 함수 안에서는 새로운 쓰레드를 생성하여 네트워크 작업을 실행한다.(이렇게 별도의 쓰레드를 사용하는 이유는, 네트워크 작업의 시간이 오래 걸리는 경우에 메인 UI스레드를 블로킹하지 않고 앱이 끊김 없이 동작할 수 있도록 하기 위함이다.)
   * new Tread()를 통해 새로운 쓰레드를 생성한다.
+    
 2. 새로운 스레드의 run() 메서드에서는 무한루프를 톨면서 주기적으로 서버로부터 데이터를 가져온다.
-    * System.current
+    * System.currentTimeMillis()를 사용하여 현재 시간을 milliseconds로 가져온다.
+    * Data객체를 사용하여 현재 시간(now)을 날짜와 시간 정보가 있는 형식으로 변환한다.
+    * simpleDateFormat을 사용하여 날짜와 시간을 원하는 형식으로 포맷팅하여 getTime변수에 저장한다.
+    * Jsoup 라이브러리를 사용하여 URL에 접속하고 데이터를 가져온다. 연결 시간 제한은 5초로 설정되어 있다. 데이터는 doc 변수에 저장
+    * doc.body().text()를 사용하여 doc의 본문 데이터를 가져와서 이를 JSONObject로 변환한다.
+    * 변환된 JSONObject에서 blackice라는 키 값을 가진 배열 데이터 (blackiceArray)를 가져혼다.
+    * mapView에서 모든 POI 아이템(마커)을 제거한다. mapView.removeAllPOIItems()를 통해 기존에 표시된 마커들을 지우고 새로운 마커들을 추가할 준비를 한다.
+    * dateList라는 ArrayList를 생성한다. 이 리스트는 마커의 정보와 관련된 시간 데이터를 저장할 예정이다.
+      
+3. blackiceArray라는 JSON 배열에서 데이터를 읽어와서 지도에 마커를 추가하고, 특정 조건에 따라 마커의 모양을 설정하고 알림음을 울리는 작업을 수행한다.
+   * for 루프를 사용하여 blackiceArray의 각 JSON 객체를 순회한다.
+   * 각 JSON객체에서 latitude와 longitude 값을 가져와서 markerLatitude와 markerLongitude 변수에 저장한다.
+   * blackiceData 객체를 생성하고 JSON 객체에서 가져온 값들을 이 객체의 속성으로 설정한다.
+   * markerLocate 객체의 위도 경도를 markerLatitude와 markerLongitude로 설정한다.
+   * nowLocate 객체의 위도와 경도를 사용자의 현재 위치로 설정한다.
+   * blackiceData 객체를 black
