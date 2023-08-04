@@ -169,4 +169,11 @@ distanceTo() 메서드는 Location 객체에서 제공하는 메서드로, 두 �
    * blackiceData 객체를 생성하고 JSON 객체에서 가져온 값들을 이 객체의 속성으로 설정한다.
    * markerLocate 객체의 위도 경도를 markerLatitude와 markerLongitude로 설정한다.
    * nowLocate 객체의 위도와 경도를 사용자의 현재 위치로 설정한다.
-   * blackiceData 객체를 black
+   * blackiceData 객체를 blackiceList에 추가한다
+   * 새로운 MapPOIItem 객체를 생성하고 latitue와 longitude 값을 사용하여 MapPoint를 생성한다.
+   * datetime 값을 가져와서 dateList에 추가한다.
+   * ice_type 값에 따라 마커의 모양과 생상을 설정한다.
+       - water의 경우 sItems에서 선택된 시간대와 datetime의 시간대를 비교하여 같으면 파란핵(MapPOIItem.MarkerType.BluePin) 마커를 생성하고 지도에 추가한다
+       - ice인 경우에오 같은 방식으로 노란색 마커를 생성하고 지도에 추가한다.
+    * 만약 거리(dist)가 100미터 이내이고, 선택된 시간대(getTime)와 sItema에서 선택된 시간대가 같아면 알림음을 울리고 빨간색 마커를 생성하여 지도에 추가한다.
+    * 
