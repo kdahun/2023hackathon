@@ -14,3 +14,7 @@ Open JDK 폴더(C:\Program Files\Android\Android Studio\jre\bin)로 이동하여
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 ## 6. AndroidManifest.xml 파일을 편집한다.
+
+
+
+잘 모르겠으면 googole 액티비티? google맵 선택후 API만 Manifest에 넣어주기
